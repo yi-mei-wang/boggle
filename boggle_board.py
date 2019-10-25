@@ -20,13 +20,17 @@ def check_first_word(word, board):
         True if the first letter of word is found, and vice versa.
     """
 
+    anchors = []
+
     # Iterate through the rows of the board
-    for row in board:
+    for y, row in enumerate(board):
         # Iterate through the elements of each row
-        for elem in row:
+        for x, elem in enumerate(row):
+            # Check if the first letter is found
             if word[0] == elem:
-                return True
-    # Check if the first letter is found
+                anchors.append((x, y))
+
+    return anchors
 
 
 def setup():
