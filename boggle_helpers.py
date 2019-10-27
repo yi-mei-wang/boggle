@@ -80,3 +80,9 @@ def print_board(board):
         print('\r')
 
     print('-' * 10)
+
+
+def get_coords(x, y):
+    return [
+        (x - 1, y), (x + 1, y)
+    ]
