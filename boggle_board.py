@@ -83,6 +83,21 @@ def check_around(word, board, x, y, history):
     #     return check_around(word, board, , possibilities)
 
 
+def find_word(word, anchors):
+    if find_word:
+        return True
+
+    # Go through every occurrence of the first char of word and search for the remainder of the word
+    for a in anchors:
+        # If I can find the next char in the possible co-ordinates, I try to find the rest
+
+        # If I can find the next char, I try to find the next word
+        pass
+    
+    # If all the anchors have been searched and the word is still not found, trigger backtracking
+    return False
+
+
 def setup():
     # Initialise an empty board
     board = bh.empty_board(4)
