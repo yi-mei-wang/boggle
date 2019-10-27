@@ -17,31 +17,36 @@ DICE = ["AAEEGN",
         "HLNNRZ",
         "DEILRX"]
 
-# Generate a 4 x 4 board
-
 
 def empty_board(num):
-    """
-    Returns a blank board.
+    """Returns a blank board.
+
+    Args:
+        num: An int representing the desired dimension of the final board
+
+    Returns:
+        A num * num 2D list. The list contains num number of lists, where each child list contains num number of empty strings.
     """
 
     board = []
     for _ in range(num):
-        board.append(['-'] * num)
+        board.append([''] * num)
     return board
 
 
 def shake(dice, board):
-    """
-    Fills each spot in the board with a random side of a die.
+    """Fills each spot in a board with a random side of a die.
 
-    Parameters:
-    ---
-    A list of strings where each string represents a six-sided die.
+    Replaces each element in a list of lists with a random char.
+
+    Args:
+    -----
+        dice : A list of strings where each string represents a six-sided die
+        board :  A list of lists that represents a Boggle board
 
     Returns:
-    ---
-    A filled board
+    --------
+        A board populated with random letters.
     """
     row = 0
 
@@ -83,6 +88,19 @@ def print_board(board):
 
 
 def get_coords(x, y):
+    """Generates the coordinates of all neighbouring cells of the provided cell.
+
+    Generates the coordinates of the cells to the left, right, top, bottom and diagonal of a cell based on the x- and y-coordinates provided.
+
+    Args:
+    -----
+        x : An int representing the x-coordinate of a cell
+        y : An int representing the y-coordinate of a cell
+
+    Returns:
+    --------
+        A list of tuples representing the coordinates of the neighbouring cells of a given cell. Only cells within the confines of a 4 * 4 board are included.
+    """
     coords = [
         # Right
         (x + 1, y),
