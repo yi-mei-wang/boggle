@@ -2,22 +2,19 @@ import random
 import boggle_helpers as bh
 
 
-def check_word(word, board):
-    """
-    Searches for the first letter of a given word in a board.
+def check_first_letter(word, board):
+    """Searches for the first letter of a given word in a board.
 
-    Parameters:
-    -----------
-    word : str
-        The string to search for
+    Iterates through the board to obtain the coordinates of all the occurrences of the first char of word.
 
-    board : list
-        A 2D 4x4 list where each element is a random letter
+    Args: 
+    -----
+        word : A string containing the word to search for
+        board : A 2-D list whose each element is a random letter
 
     Returns:
     --------
-    bool
-        True if the first letter of word is found, and vice versa.
+        A list containing coordinates of where the first letter occurs in the board 
     """
 
     anchors = []
@@ -29,61 +26,22 @@ def check_word(word, board):
             # Check if the first letter is found
             if word[0] == elem:
                 anchors.append((x, y))
-                # If T is found in TEST, check if EST can be found
-                # return check_around(word[1:], board, x, y, anchors)
-    # return False
+
     return anchors
 
 
-def check_around(word, board, x, y, history):
-    """
-    Parameters:
-    -----------
-    word : str
-        A word or part thereof to search for in the board
-    board : list
-        A 2D list representing a board
-    x : int
-        The horizontal displacement of a char from the top-left-hand corner of the board
-    y : int
-        The vertical displacement of a char from the top-left-hand corner of the board
-    history : list 
-        Each element is a tuple representing the coordinates of past searches
-    """
-
-    # Exit condition: found the letter
-    if len(word) == 0:
-        return True
-
-    print('word', word)
-    print('history', history)
-    print('x', x)
-    print('y', y)
-
-    # Possible places to search
-    possibilities = bh.get_coords(x, y)
-    print('possibilities', possibilities)
-    print('possibilities[0]', possibilities[0])
-    print(f'board[{possibilities[0][1]}][{possibilities[0][0]}]',
-          board[possibilities[0][1]][possibilities[0][0]])
-
-    new_x = possibilities[0][0]
-    new_y = possibilities[0][1]
-
-    # If the next character is found on the left, proceed to the next letter by slicing word
-    if word[0] == board[new_y][new_x]:
-        print('yes\n')
-        history.append((new_x, new_y))
-        return check_around(word[1:], board, new_x, new_y, history)
-
-    # If found, continue by passing the co-ords to check (call get co-ords)
-    # Look around the letter (remember to confine to the bounds of the board)
-    # Get the co-ords to check
-    # else:
-    #     return check_around(word, board, , possibilities)
-
-
 def find_in_coords(char, x, y, board):
+    """Finds a char based on the coordinates provided.
+
+    Searches for char in all the neighbouring cells of the starting point, which is represented by the x- and y-coordinates provided.
+
+    Args:
+    -----
+        char : A single character to be searched for
+        x : An int representing the x-coordinate of the starting point
+        y : An int representing the y-coordinate of the starting point
+        board : A 2-D list whose each element is a random letter
+    """
     pos_to_check = bh.get_coords(x, y)
 
     new_coords = []
@@ -96,15 +54,28 @@ def find_in_coords(char, x, y, board):
 
 
 def find_word(word, anchors, board):
+    """ Finds a word in a Boggle board.
+
+    Searches for a word or part thereof in a Boggle board using the coordinates given. 
+
+    Args:
+    -----
+        word : A string representing the word to be searched for or part thereof
+        anchors : A list of coordinates of where the word should be searched in relation to
+        board : A 2-D list representing a Boggle board
+
+    Returns:
+    --------
+        A boolean indicating whether the word is found or not
+    """
+
+    # Exit condition
     if not len(word):
         return True
 
     # Go through every occurrence of the first char of word and search for the remainder of the word
-    # Go through all occurrences of B
     for (x, y) in anchors:
-        # If I can find the next char in the possible co-ordinates, I try to find the rest
-
-        # Get the possible co-ordinates of the E in BEST
+        # Find
         possibilities = find_in_coords(word[0], x, y, board)
 
         # If E is found in the neighbouring cells of B,
@@ -117,36 +88,44 @@ def find_word(word, anchors, board):
     return False
 
 
-def setup():
-    # Initialise an empty board
-    board = bh.empty_board(4)
+def setup(n):
+    """ Sets up a Boggle board.
+
+    Populates a list of lists with randomly chosen letters.
+
+    Args:
+    -----
+        n: An int representing the desired dimension of the resulting Boggle board
+
+    Returns:
+    --------
+        A list containing n lists, which each contains n letters. For example:
+        [['D', 'R', 'O', 'G'], 
+         ['S', 'X', 'R', 'H'], 
+         ['I', 'T', 'I', 'A'], 
+         ['H', 'S', 'N', 'P']]
+    """
 
     # Shuffle the 16 dice
     dice = bh.shuffle(bh.DICE)
 
     # Fill the current board
-    return bh.shake(dice, board)
+    return bh.shake(dice, bh.empty_board(n))
 
 
 def play_game():
-    board = setup()
+    board = setup(4)
+    print(board)
 
     while True:
         bh.print_board(board)
 
         word_to_check = input('Enter the word to be checked: ').upper()
 
-        anchors = check_word(word_to_check, board)
+        anchors = check_first_letter(word_to_check, board)
         print(anchors)
 
         print(find_word(word_to_check[1:], anchors, board))
-
-        # Only check the rest of the word if the first word is found in the board
-        # if not check_word(word_to_check, board):
-        #     print('WORD NOT FOUND')
-
-        # else:
-        #     continue
 
 
 play_game()
