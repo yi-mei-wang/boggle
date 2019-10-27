@@ -39,12 +39,16 @@ def check_around(word, board, x, y, history):
     """
     Parameters:
     -----------
-    char : str
-        A letter to search for in the board
+    word : str
+        A word or part thereof to search for in the board
     board : list
         A 2D list representing a board
+    x : int
+        The horizontal displacement of a char from the top-left-hand corner of the board
+    y : int
+        The vertical displacement of a char from the top-left-hand corner of the board
     history : list 
-        Each element is a dictionary representing the coordinates of possible searches
+        Each element is a tuple representing the coordinates of past searches
     """
 
     # Exit condition: found the letter
