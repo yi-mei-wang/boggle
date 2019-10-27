@@ -83,15 +83,21 @@ def print_board(board):
 
 
 def get_coords(x, y):
-    left = {"x": x - 1, "y": y}
-    right = {"x": x + 1, "y": y}
+    coords = [
+        # Left
+        (x - 1, y),
+        # Right
+        (x + 1, y),
+        # Top
+        (x, y - 1),
+        # Bottom
+        (x, y + 1),
+        # Diagonals
+        (x - 1, y - 1),
+        (x + 1, y + 1),
+        # Anti-diagonals
+        (x + 1, y - 1),
+        (x - 1, y + 1)
+    ]
 
-    coords = []
-
-    if x != 0:
-        coords.append(left)
-
-    if x != 3:
-        coords.append(right)
-
-    return coords
+    return [coord for coord in coords if coord[0] >= 0 and coord[0] <= 3 and coord[1] >= 0 and coord[1] <= 3]
