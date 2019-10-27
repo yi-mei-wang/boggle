@@ -74,9 +74,10 @@ def find_word(word, anchors, board):
         return True
 
     # Go through every occurrence of the first char of word and search for the remainder of the word
+    print('Searching in ', anchors)
     for (x, y) in anchors:
-        # Find
         possibilities = find_in_coords(word[0], x, y, board)
+        print(f'{word[0]} is found in {possibilities}')
 
         # If E is found in the neighbouring cells of B,
         if possibilities:
@@ -115,7 +116,6 @@ def setup(n):
 
 def play_game():
     board = setup(4)
-    print(board)
 
     while True:
         bh.print_board(board)
@@ -123,7 +123,6 @@ def play_game():
         word_to_check = input('Enter the word to be checked: ').upper()
 
         anchors = check_first_letter(word_to_check, board)
-        print(anchors)
 
         print(find_word(word_to_check[1:], anchors, board))
 
