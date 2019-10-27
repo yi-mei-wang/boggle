@@ -30,9 +30,9 @@ def check_word(word, board):
             if word[0] == elem:
                 anchors.append((x, y))
                 # If T is found in TEST, check if EST can be found
-                return check_around(word[1:], board, x, y, anchors)
-
-    return False
+                # return check_around(word[1:], board, x, y, anchors)
+    # return False
+    return anchors
 
 
 def check_around(word, board, x, y, history):
@@ -83,17 +83,36 @@ def check_around(word, board, x, y, history):
     #     return check_around(word, board, , possibilities)
 
 
-def find_word(word, anchors):
-    if find_word:
+def find_in_coords(char, x, y, board):
+    pos_to_check = bh.get_coords(x, y)
+
+    new_coords = []
+
+    for (new_x, new_y) in pos_to_check:
+        if char == board[new_y][new_x]:
+            new_coords.append((new_x, new_y))
+
+    return new_coords
+
+
+def find_word(word, anchors, board):
+    if not len(word):
         return True
 
     # Go through every occurrence of the first char of word and search for the remainder of the word
-    for a in anchors:
+    # Go through all occurrences of B
+    for (x, y) in anchors:
         # If I can find the next char in the possible co-ordinates, I try to find the rest
 
-        # If I can find the next char, I try to find the next word
-        pass
-    
+        # Get the possible co-ordinates of the E in BEST
+        possibilities = find_in_coords(word[0], x, y, board)
+
+        # If E is found in the neighbouring cells of B,
+        if possibilities:
+            # Look for ST in all the occurrences of E
+            if find_word(word[1:], possibilities, board):
+                return True
+
     # If all the anchors have been searched and the word is still not found, trigger backtracking
     return False
 
@@ -117,7 +136,10 @@ def play_game():
 
         word_to_check = input('Enter the word to be checked: ').upper()
 
-        print(check_word(word_to_check, board))
+        anchors = check_word(word_to_check, board)
+        print(anchors)
+
+        print(find_word(word_to_check[1:], anchors, board))
 
         # Only check the rest of the word if the first word is found in the board
         # if not check_word(word_to_check, board):

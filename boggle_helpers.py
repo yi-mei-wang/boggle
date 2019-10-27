@@ -88,16 +88,16 @@ def get_coords(x, y):
         (x + 1, y),
         # Left
         (x - 1, y),
-        # # Top
-        # (x, y - 1),
-        # # Bottom
-        # (x, y + 1),
-        # # Diagonals
-        # (x - 1, y - 1),
-        # (x + 1, y + 1),
-        # # Anti-diagonals
-        # (x + 1, y - 1),
-        # (x - 1, y + 1)
+        # Top
+        (x, y - 1),
+        # Bottom
+        (x, y + 1),
+        # Diagonals
+        (x - 1, y - 1),
+        (x + 1, y + 1),
+        # Anti-diagonals
+        (x + 1, y - 1),
+        (x - 1, y + 1)
     ]
 
     return [coord for coord in coords if coord[0] >= 0 and coord[0] <= 3 and coord[1] >= 0 and coord[1] <= 3]
