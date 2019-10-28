@@ -7,7 +7,7 @@ def binary_search(target, my_list):
     -----
         target : A string or an int to be searched for
         my_list :  A sorted list to be searched from
-    
+
     Returns:
     --------
         A boolean indicating whether the target is found.
@@ -46,3 +46,7 @@ def load_dictionary(pathname):
         A list whose elements are the words from the .txt file with their newline character stripped.
     """
     return [line.rstrip('\n') for line in open(pathname)]
+
+
+if __name__ == "__main__":
+    

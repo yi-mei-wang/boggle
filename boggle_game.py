@@ -33,4 +33,5 @@ def play_game():
             print('Word not found in board.\n\nPlease try with another word.\n')
 
 
-play_game()
+if __name__ == "__main__":
+    play_game()
