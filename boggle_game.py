@@ -16,9 +16,8 @@ def main():
     while True:
         bh.print_board(board)
 
-        word_to_check = input('Enter the word to be checked: ').upper()
-
-        word_to_check = word_to_check.replace('QU', 'Q')
+        word_to_check = input(
+            'Enter the word to be checked: ').upper().replace('QU', 'Q')
 
         anchors = bs.check_first_letter(word_to_check, board)
 
@@ -26,7 +25,7 @@ def main():
             print('Word is found in board!\n')
             print('Checking if word is found in dictionary...')
 
-            if bd.binary_search(word_to_check.lower(), dictionary):
+            if bd.binary_search(word_to_check.lower().replace('q', 'qu'), dictionary):
                 print(f'{word_to_check} is a valid word!')
             else:
                 print(f'{word_to_check} is not a valid word!')
