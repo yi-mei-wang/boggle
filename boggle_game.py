@@ -18,6 +18,8 @@ def main():
 
         word_to_check = input('Enter the word to be checked: ').upper()
 
+        word_to_check = word_to_check.replace('QU', 'Q')
+
         anchors = bs.check_first_letter(word_to_check, board)
 
         if bs.find_word(word_to_check[1:], anchors, board, []):
