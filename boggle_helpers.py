@@ -69,6 +69,31 @@ def shuffle(dice):
     return dice
 
 
+def fill_board(n):
+    """ Sets up a Boggle board.
+
+    Populates a list of lists with randomly chosen letters.
+
+    Args:
+    -----
+        n: An int representing the desired dimension of the resulting Boggle board
+
+    Returns:
+    --------
+        A list containing n lists, which each contains n letters. For example:
+        [['D', 'R', 'O', 'G'],
+         ['S', 'X', 'R', 'H'],
+         ['I', 'T', 'I', 'A'],
+         ['H', 'S', 'N', 'P']]
+    """
+
+    # Shuffle the 16 dice
+    dice = shuffle(DICE)
+
+    # Fill the current board
+    return shake(dice, empty_board(n))
+
+
 def print_board(board):
     """
     Prints out a 2d board.

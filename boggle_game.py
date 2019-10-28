@@ -4,28 +4,7 @@ import boggle_search as bs
 
 
 def setup(n):
-    """ Sets up a Boggle board.
 
-    Populates a list of lists with randomly chosen letters.
-
-    Args:
-    -----
-        n: An int representing the desired dimension of the resulting Boggle board
-
-    Returns:
-    --------
-        A list containing n lists, which each contains n letters. For example:
-        [['D', 'R', 'O', 'G'], 
-         ['S', 'X', 'R', 'H'], 
-         ['I', 'T', 'I', 'A'], 
-         ['H', 'S', 'N', 'P']]
-    """
-
-    # Shuffle the 16 dice
-    dice = bh.shuffle(bh.DICE)
-
-    # Fill the current board
-    return bh.shake(dice, bh.empty_board(n))
 
 
 def play_game():
