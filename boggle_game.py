@@ -9,9 +9,12 @@ def setup(n, pathname):
     Args:
     -----
         n : An int representing the desired dimension of a Boggle board
+        pathname : A string representing the path to a .txt file
 
     Returns:
-    --------
+    -------- 
+        A 2D list of n * n dimension representing a Boggle board and a list containing all the words in the dictionary.g
+
     """
     board = bh.fill_board(n)
     dictionary = bd.load_dictionary(pathname)
