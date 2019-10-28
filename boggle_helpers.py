@@ -22,9 +22,11 @@ def empty_board(num):
     """Returns a blank board.
 
     Args:
+    -----
         num: An int representing the desired dimension of the final board
 
     Returns:
+    --------
         A num * num 2D list. The list contains num number of lists, where each child list contains num number of empty strings.
     """
 
@@ -62,8 +64,15 @@ def shake(dice, board):
 
 
 def shuffle(dice):
-    """
-    Shuffle the arrangement of the dice in the list
+    """Shuffles the order of the elements in the list.
+
+    Args:
+    -----  
+        dice : A list of strings
+
+    Returns:
+    --------
+        A shuffled version of the original list.
     """
     random.shuffle(dice)
     return dice
