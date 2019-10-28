@@ -28,6 +28,7 @@ def check_first_letter(word, board):
                 anchors.append((x, y))
 
     print(f'\n{word[0]} is found in {anchors}\n')
+
     return anchors
 
 
