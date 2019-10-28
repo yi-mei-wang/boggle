@@ -121,10 +121,10 @@ def get_coords(x, y):
     return [coord for coord in coords if coord[0] >= 0 and coord[0] <= 3 and coord[1] >= 0 and coord[1] <= 3]
 
 
-def binary_search(target, my_list, start, endpoint):
+def binary_search(target, my_list):
     # Check the midpoint of the list
-    # start = 0
-    # endpoint = len(my_list) - 1
+    start = 0
+    endpoint = len(my_list) - 1
     midpoint = (start + endpoint) // 2
 
     if start > endpoint:
@@ -135,9 +135,9 @@ def binary_search(target, my_list, start, endpoint):
             return True
 
         elif target < my_list[midpoint]:
-            endpoint = midpoint - 1
-            return binary_search(target, my_list, 0, endpoint)
+            # endpoint = midpoint - 1
+            return binary_search(target, my_list[0:midpoint])
 
         elif target > my_list[midpoint]:
-            start = midpoint + 1
-            return binary_search(target, my_list, start, endpoint)
+            # start = midpoint + 1
+            return binary_search(target, my_list[midpoint+1:])
