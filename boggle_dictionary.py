@@ -21,4 +21,16 @@ def binary_search(target, my_list):
 
 
 def load_dictionary(pathname):
+    """Loads a dictionary in the form of a .txt file.
+
+    Opens a .txt file. Strips the ending newline character from each line in the file before appending each line into a list.
+
+    Args:
+    -----
+        pathname : A string representing the path to a .txt file. The file should contain a new word on each line. 
+
+    Returns:
+    --------
+        A list whose elements are the words from the .txt file with their newline character stripped.
+    """
     return [line.rstrip('\n') for line in open(pathname)]
