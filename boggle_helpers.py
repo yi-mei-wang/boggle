@@ -128,5 +128,3 @@ def print_board(board):
         print('\r')
 
     print('-' * 10)
-
-

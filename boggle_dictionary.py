@@ -47,6 +47,3 @@ def load_dictionary(pathname):
     """
     return [line.rstrip('\n') for line in open(pathname)]
 
-
-if __name__ == "__main__":
-    

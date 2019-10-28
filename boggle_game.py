@@ -10,7 +10,7 @@ def setup(n):
     return board, dictionary
 
 
-def play_game():
+def main():
     board, dictionary = setup(4)
 
     while True:
@@ -34,4 +34,4 @@ def play_game():
 
 
 if __name__ == "__main__":
-    play_game()
+    main()
