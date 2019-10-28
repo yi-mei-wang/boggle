@@ -11,6 +11,18 @@ def setup(n):
 
 
 def main():
+    """ Starts a Boggle game.
+
+    Continuously obtains an input from the user, checks if it exists in the board, and validates it against a dictionary.
+
+    Args:
+    -----
+        None
+
+    Returns:
+    --------
+        None
+    """
     board, dictionary = setup(4)
 
     while True:
