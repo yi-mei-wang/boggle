@@ -4,14 +4,14 @@ import boggle_search as bs
 
 
 def setup(n):
-
+    board = bh.fill_board(n)
+    dictionary = 
 
 
 def play_game():
     board = setup(4)
 
-    filename = '/Users/mei/work/teaching/python-sep-19/day-3/recursion/boggle/dictionary.txt'
-    dictionary = [line.rstrip('\n') for line in open(filename)]
+    
 
     while True:
         bh.print_board(board)

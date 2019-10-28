@@ -18,3 +18,7 @@ def binary_search(target, my_list):
         elif target > my_list[midpoint]:
             # start = midpoint + 1
             return binary_search(target, my_list[midpoint+1:])
+
+
+def load_dictionary(pathname):
+    return [line.rstrip('\n') for line in open(pathname)]
