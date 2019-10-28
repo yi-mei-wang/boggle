@@ -1,16 +1,17 @@
-def get_coords(x, y):
+def get_coords(x, y, n):
     """Generates the coordinates of all neighbouring cells of the provided cell.
 
-    Generates the coordinates of the cells to the left, right, top, bottom and diagonal of a cell based on the x- and y-coordinates provided.
+    Looks at the cells to the left, right, top, bottom and diagonal of a cell based on the x- and y-coordinates provided. 
 
     Args:
     -----
         x : An int representing the x-coordinate of a cell
         y : An int representing the y-coordinate of a cell
+        n : An int representing the dimension of the board containing the cells
 
     Returns:
     --------
-        A list of tuples representing the coordinates of the neighbouring cells of a given cell. Only cells within the confines of a 4 * 4 board are included.
+        A list of tuples representing the coordinates of the neighbouring cells of a given cell. Only cells within the confines of a n * n board are included.
     """
     coords = [
         # Right
@@ -79,7 +80,7 @@ def find_in_coords(char, x, y, board, history):
     --------
         A list of the new coordinates to search.
     """
-    pos_to_check = get_coords(x, y)
+    pos_to_check = get_coords(x, y, 4)
 
     new_coords = []
 
