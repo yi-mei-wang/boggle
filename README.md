@@ -1,4 +1,4 @@
-# A simple Boggle-inspired game implemented in the command line.
+# A simple command-line Boggle-inspired word game implemented in Python.
 
 ### Features:
 1. Gets an input from the user
