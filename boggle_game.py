@@ -3,9 +3,18 @@ import boggle_helpers as bh
 import boggle_search as bs
 
 
-def setup(n):
+def setup(n, pathname):
+    """ Sets up the necessary components of a Boggle game.
+
+    Args:
+    -----
+        n : An int representing the desired dimension of a Boggle board
+
+    Returns:
+    --------
+    """
     board = bh.fill_board(n)
-    dictionary = bd.load_dictionary('dictionary.txt')
+    dictionary = bd.load_dictionary(pathname)
 
     return board, dictionary
 
@@ -23,7 +32,7 @@ def main():
     --------
         None
     """
-    board, dictionary = setup(4)
+    board, dictionary = setup(4, 'dictionary.txt')
 
     while True:
         bh.print_board(board)
