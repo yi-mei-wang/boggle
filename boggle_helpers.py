@@ -95,8 +95,17 @@ def fill_board(n):
 
 
 def print_board(board):
-    """
-    Prints out a 2d board.
+    """Flattens and prints out an n * n board.
+
+    Iterates through a 2D list and its constituent elements and prints them out neatly. 
+
+    Args:
+    -----
+    board : A 2D list that represents a boggle board
+
+    Returns:
+    --------
+    None
     """
     print('-' * 10)
 
