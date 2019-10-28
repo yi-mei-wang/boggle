@@ -29,6 +29,7 @@ def main():
 
             if bd.binary_search(word_to_validate.lower(), dictionary):
                 print(f'{word_to_validate} is a valid word!')
+
             else:
                 print(f'{word_to_validate} is not a valid word!')
 
