@@ -25,10 +25,12 @@ def main():
             print('Word is found in board!\n')
             print('Checking if word is found in dictionary...')
 
-            if bd.binary_search(word_to_find.lower().replace('q', 'qu'), dictionary):
-                print(f'{word_to_find} is a valid word!')
+            word_to_validate = word_to_find.replace('Q', 'QU')
+
+            if bd.binary_search(word_to_validate.lower(), dictionary):
+                print(f'{word_to_validate} is a valid word!')
             else:
-                print(f'{word_to_find} is not a valid word!')
+                print(f'{word_to_validate} is not a valid word!')
 
         else:
             print('Word not found in board.\n\nPlease try with another word.\n')
