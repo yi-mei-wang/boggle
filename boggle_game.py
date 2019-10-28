@@ -1,4 +1,3 @@
-import random
 import boggle_dictionary as bd
 import boggle_helpers as bh
 import boggle_search as bs
@@ -6,7 +5,6 @@ import boggle_search as bs
 
 def setup(n):
     board = bh.fill_board(n)
-    # dictionary = bd.load_dictionary('/Users/mei/work/teaching/python-sep-19/day-3/recursion/boggle/dictionary.txt')
     dictionary = bd.load_dictionary('dictionary.txt')
 
     return board, dictionary
@@ -32,7 +30,7 @@ def play_game():
                 print(f'{word_to_check} is not a valid word!')
 
         else:
-            print('Word not found in board.\n\nPlease try with another word.')
+            print('Word not found in board.\n\nPlease try with another word.\n')
 
 
 play_game()
