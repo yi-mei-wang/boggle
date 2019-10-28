@@ -1,3 +1,37 @@
+def get_coords(x, y):
+    """Generates the coordinates of all neighbouring cells of the provided cell.
+
+    Generates the coordinates of the cells to the left, right, top, bottom and diagonal of a cell based on the x- and y-coordinates provided.
+
+    Args:
+    -----
+        x : An int representing the x-coordinate of a cell
+        y : An int representing the y-coordinate of a cell
+
+    Returns:
+    --------
+        A list of tuples representing the coordinates of the neighbouring cells of a given cell. Only cells within the confines of a 4 * 4 board are included.
+    """
+    coords = [
+        # Right
+        (x + 1, y),
+        # Left
+        (x - 1, y),
+        # Top
+        (x, y - 1),
+        # Bottom
+        (x, y + 1),
+        # Diagonals
+        (x - 1, y - 1),
+        (x + 1, y + 1),
+        # Anti-diagonals
+        (x + 1, y - 1),
+        (x - 1, y + 1)
+    ]
+
+    return [coord for coord in coords if coord[0] >= 0 and coord[0] <= 3 and coord[1] >= 0 and coord[1] <= 3]
+
+
 def check_first_letter(word, board):
     """Searches for the first letter of a given word in a board.
 
@@ -45,7 +79,7 @@ def find_in_coords(char, x, y, board, history):
     --------
         A list of the new coordinates to search.
     """
-    pos_to_check = bh.get_coords(x, y)
+    pos_to_check = get_coords(x, y)
 
     new_coords = []
 
