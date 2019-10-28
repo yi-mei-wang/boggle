@@ -1,5 +1,17 @@
 def binary_search(target, my_list):
-    # Check the midpoint of the list
+    """ Searches for a target in a sorted list recursively.
+
+    Uses the binary search algorithm. Target is compared to the midpoint. If the former is not found, compare it to the latter. Depending on whether the target is smaller or larger than the midpoint, the irrelevant portion of the list is discarded.
+
+    Args:
+    -----
+        target : A string or an int to be searched for
+        my_list :  A sorted list to be searched from
+    
+    Returns:
+    --------
+        A boolean indicating whether the target is found.
+    """
     start = 0
     endpoint = len(my_list) - 1
     midpoint = (start + endpoint) // 2
