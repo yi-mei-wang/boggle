@@ -1,17 +1,19 @@
 import random
+import boggle_dictionary as bd
 import boggle_helpers as bh
 import boggle_search as bs
 
 
 def setup(n):
     board = bh.fill_board(n)
-    dictionary = 
+    # dictionary = bd.load_dictionary('/Users/mei/work/teaching/python-sep-19/day-3/recursion/boggle/dictionary.txt')
+    dictionary = bd.load_dictionary('dictionary.txt')
+
+    return board, dictionary
 
 
 def play_game():
-    board = setup(4)
-
-    
+    board, dictionary = setup(4)
 
     while True:
         bh.print_board(board)
@@ -24,13 +26,13 @@ def play_game():
             print('Word is found in board!\n')
             print('Checking if word is found in dictionary...')
 
-            if bh.binary_search(word_to_check.lower(), dictionary):
+            if bd.binary_search(word_to_check.lower(), dictionary):
                 print(f'{word_to_check} is a valid word!')
             else:
                 print(f'{word_to_check} is not a valid word!')
 
         else:
-            print('Word not found in board.\nPlease try with another word.')
+            print('Word not found in board.\n\nPlease try with another word.')
 
 
 play_game()
