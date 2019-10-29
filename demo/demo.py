@@ -194,6 +194,21 @@ def play():
         word_to_find = input(
             'Enter the word to be checked: ').upper().replace('QU', 'Q')
 
+        # Check if word if more 3 chars long
+        if len(word_to_find) < 3:
+            print('Choose a word that is equal to or longer than 3 characters long.')
+
+        else:
+            # Search for all occurrences of the first char
+            anchors = find_first_char(word_to_find[0], board)
+
+            # Try to find the rest of the word in the board
+            if find_word(word_to_find[1:], anchors, board, []):
+                print(f"{word_to_find.replace('Q', 'QU')} is found!")
+
+            else:
+                print(f"{word_to_find.replace('Q', 'QU')} is not found!")
+
 
 if __name__ == "__main__":
     play()
