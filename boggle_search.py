@@ -48,7 +48,7 @@ def find_first_char(char, board):
         A list containing coordinates of where the first letter occurs in the board 
     """
 
-    anchors = []
+    first_char_coords = []
 
     # Iterate through the rows of the board
     for y, row in enumerate(board):
@@ -56,11 +56,11 @@ def find_first_char(char, board):
         for x, elem in enumerate(row):
             # Check if the first letter is found
             if char == elem:
-                anchors.append((x, y))
+                first_char_coords.append((x, y))
 
-    print(f'\n{char} is found in {anchors}\n')
+    print(f'\n{char} is found in {first_char_coords}\n')
 
-    return anchors
+    return first_char_coords
 
 
 def get_possible_coords(char, x, y, board, history):
@@ -92,7 +92,7 @@ def get_possible_coords(char, x, y, board, history):
     return new_coords
 
 
-def find_word(word, anchors, board, history):
+def find_word(word, first_char_coords, board, history):
     """ Finds a word in a Boggle board.
 
     Searches for a word or part thereof in a Boggle board using the coordinates given. Uses the backtracking algorithm to search depth first. 
@@ -100,7 +100,7 @@ def find_word(word, anchors, board, history):
     Args:
     -----
         word : A string representing the word to be searched for or part thereof
-        anchors : A list of coordinates of where the word should be searched in relation to
+        first_char_coords : A list of coordinates of where the word should be searched in relation to
         board : A 2-D list representing a Boggle board
         history : A list of coordinates of past searches
 
@@ -114,7 +114,7 @@ def find_word(word, anchors, board, history):
         return True
 
     # Go through every occurrence of the first char of word
-    for (x, y) in anchors:
+    for (x, y) in first_char_coords:
         print(f'Searching for {word[0]} from around ({x}, {y})')
 
         # Search for the remainder of the word
@@ -135,5 +135,5 @@ def find_word(word, anchors, board, history):
             # Remove from history if current path does yield the remaining chars
             history.remove((x, y))
 
-    # If all the anchors have been searched and the word is still not found, trigger backtracking
+    # If all the first_char_coords have been searched and the word is still not found, trigger backtracking
     return False
