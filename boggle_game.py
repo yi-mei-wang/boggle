@@ -43,22 +43,26 @@ def main():
         word_to_find = input(
             'Enter the word to be checked: ').upper().replace('QU', 'Q')
 
-        anchors = bs.check_first_letter(word_to_find, board)
-
-        if bs.find_word(word_to_find[1:], anchors, board, []):
-            print('Word is found in board!\n')
-            print('Checking if word is found in dictionary...')
-
-            word_to_validate = word_to_find.replace('Q', 'QU')
-
-            if bd.binary_search(word_to_validate.lower(), dictionary):
-                print(f'{word_to_validate} is a valid word!')
-
-            else:
-                print(f'{word_to_validate} is not a valid word!')
+        if len(word_to_find) < 3:
+            print('Choose a word that is equal to or longer than 3 characters long.')
 
         else:
-            print('Word not found in board.\n\nPlease try with another word.\n')
+            anchors = bs.check_first_letter(word_to_find, board)
+
+            if bs.find_word(word_to_find[1:], anchors, board, []):
+                print('Word is found in board!\n')
+                print('Checking if word is found in dictionary...')
+
+                word_to_validate = word_to_find.replace('Q', 'QU')
+
+                if bd.binary_search(word_to_validate.lower(), dictionary):
+                    print(f'{word_to_validate} is a valid word!')
+
+                else:
+                    print(f'{word_to_validate} is not a valid word!')
+
+            else:
+                print('Word not found in board.\n\nPlease try with another word.\n')
 
 
 if __name__ == "__main__":
