@@ -1,4 +1,4 @@
-def get_coords(x, y, n):
+def get_neighbour_coords(x, y, n):
     """Generates the coordinates of all neighbouring cells of the provided cell.
 
     Looks at the cells to the left, right, top, bottom and diagonal of a cell based on the x- and y-coordinates provided. 
@@ -64,7 +64,7 @@ def check_first_letter(word, board):
 
 
 def find_coords(char, x, y, board, history):
-    """Finds the coordinates of a char, if present on the board, based on the coordinates provided.
+    """Finds the coordinates of a char, if present on the board, based on the coordinates of the anchor provided.
 
     Searches for char in all the neighbouring cells of the starting point, which is represented by the x- and y-coordinates provided. Takes into account previous searches so a previously-used cell cannot be reused.
 
@@ -80,7 +80,7 @@ def find_coords(char, x, y, board, history):
     --------
         A list of the new coordinates to search.
     """
-    pos_to_check = get_coords(x, y, 4)
+    pos_to_check = get_neighbour_coords(x, y, 4)
 
     new_coords = []
 
