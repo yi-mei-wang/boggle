@@ -134,9 +134,9 @@ def get_neighbour_coords(x, y):
 
 
 def get_possible_coords(char, x, y, board, history):
-    """Finds the coordinates of a char, if present on the board, based on the coordinates of the anchor provided.
+    """Returns the coordinates of char, if present on the board, based on the coordinates of the previous letter.
 
-    Searches for char in all the neighbouring cells of the anchor. Takes into account previous searches so a previously-used cell cannot be reused.
+    Searches for char in all the neighbouring cells of the previous letter. Takes into account previous searches so a previously-used cell cannot be reused.
     """
     pos_to_check = get_neighbour_coords(x, y)
 
@@ -204,10 +204,10 @@ def play():
 
         else:
             # Search for all occurrences of the first char
-            anchors = find_first_char(word_to_find[0], board)
+            first_char_coords = find_first_char(word_to_find[0], board)
 
             # Try to find the rest of the word in the board
-            if not anchors or not find_word(word_to_find[1:], anchors, board, []):
+            if not first_char_coords or not find_word(word_to_find[1:], first_char_coords, board, []):
                 print(f"{word_to_find.replace('Q', 'QU')} is not found!")
 
             else:
