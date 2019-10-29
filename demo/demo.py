@@ -21,6 +21,9 @@ DICE = ["AAEEGN",
         "DEILRX"]
 
 
+BOARD_SIZE = 4
+
+
 def shuffle(dice):
     """Shuffles the order of the elements in the list.
     """
@@ -45,17 +48,17 @@ def shake(dice, board):
     row = 0
 
     for index, die in enumerate(dice):
-        col = index % 4
+        col = index % BOARD_SIZE
 
-        board[row][col] = die[random.randint(0, 5)]
+        board[row][col] = die[random.randint(0, len(die)-1)]
 
-        if col == 3:
+        if col == BOARD_SIZE - 1:
             row += 1
 
     return board
 
 
-def fill_board(n):
+def fill_board():
     """ Sets up a Boggle board.
     """
 
@@ -63,7 +66,7 @@ def fill_board(n):
     dice = shuffle(DICE)
 
     # Fill the current board
-    return shake(dice, empty_board(n))
+    return shake(dice, empty_board(BOARD_SIZE))
 
 
 def print_board(board):
@@ -178,3 +181,19 @@ def find_word(word, first_char_coords, board, history):
 
     # If all the first_char_coords have been searched and the word is still not found, trigger backtracking
     return False
+
+
+def play():
+    board = fill_board()
+
+    # Continuosly prompt user
+    while True:
+        print_board(board)
+
+        # Get an input from the user
+        word_to_find = input(
+            'Enter the word to be checked: ').upper().replace('QU', 'Q')
+
+
+if __name__ == "__main__":
+    play()
