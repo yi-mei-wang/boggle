@@ -118,18 +118,21 @@ def find_word(word, anchors, board, history):
         print(f'Searching for {word[0]} from around ({x}, {y})')
 
         # Search for the remainder of the word
+        # Check surrounding cell for the next char
         possibilities = get_possible_coords(word[0], x, y, board, history)
 
         print(f'{word[0]} is found in {possibilities}\n')
 
-        # If E is found in the neighbouring cells of B,
+        # If the next char is found in surrounding cells
         if possibilities:
+            # Tentative add current cell to history
             history.append((x, y))
 
-            # Look for ST in all the occurrences of E
+            # Look for the subsequent char down this path
             if find_word(word[1:], possibilities, board, history):
                 return True
 
+            # Remove from history if current path does yield the remaining chars
             history.remove((x, y))
 
     # If all the anchors have been searched and the word is still not found, trigger backtracking
