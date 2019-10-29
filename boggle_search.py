@@ -129,5 +129,7 @@ def find_word(word, anchors, board, history):
             if find_word(word[1:], possibilities, board, history):
                 return True
 
+            history.remove((x, y))
+
     # If all the anchors have been searched and the word is still not found, trigger backtracking
     return False
