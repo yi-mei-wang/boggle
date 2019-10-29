@@ -207,11 +207,11 @@ def play():
             anchors = find_first_char(word_to_find[0], board)
 
             # Try to find the rest of the word in the board
-            if find_word(word_to_find[1:], anchors, board, []):
-                print(f"{word_to_find.replace('Q', 'QU')} is found!")
+            if not anchors or not find_word(word_to_find[1:], anchors, board, []):
+                print(f"{word_to_find.replace('Q', 'QU')} is not found!")
 
             else:
-                print(f"{word_to_find.replace('Q', 'QU')} is not found!")
+                print(f"{word_to_find.replace('Q', 'QU')} is found!")
 
 
 if __name__ == "__main__":
