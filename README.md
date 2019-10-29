@@ -30,8 +30,7 @@
    ```
 
 2. Organising and modularising code.  
-    This time I separated my code according to the functions they serve, e.g., all dictionary-related logic, such as loading and searching the dictionary, went into `boggle_dictionary.py`.
-     
-    I also put all my reusable logic in separate functions and modules, imported them in the main file, called them accordingly in a function named `main()`, and finally called it inside the `if __name__ == '__main__':` block.
+   This time I separated my code according to the functions they serve, e.g., all dictionary-related logic, such as loading and searching the dictionary, went into `boggle_dictionary.py`.
+   I also put all my reusable logic in separate functions and modules, imported them in the main file, called them accordingly in a function named `main()`, and finally called it inside the `if __name__ == '__main__':` block.
 3. Timing my code to evaluate its performance.  
-    Using `timeit`, I measured the time taken to load an almost 30000-line-long .txt file. While I did not do anything to improve the loading performance, I feel like this is my first step towards learning how to optimise my code.
+   Using `timeit`, I measured the time taken to load an almost 300,000-line-long .txt file. While I did not do anything to improve the loading performance, I feel like this is my first step towards learning how to optimise my code.
