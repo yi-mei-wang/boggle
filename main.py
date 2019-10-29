@@ -62,7 +62,7 @@ def main():
                     print(f'{word_to_validate} is not a valid word!')
 
             else:
-                
+
                 print('Word not found in board.\n\nPlease try with another word.\n')
 
 

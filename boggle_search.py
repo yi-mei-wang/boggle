@@ -63,8 +63,8 @@ def check_first_letter(word, board):
     return anchors
 
 
-def find_in_coords(char, x, y, board, history):
-    """Finds a char based on the coordinates provided.
+def find_coords(char, x, y, board, history):
+    """Finds the coordinates of a char, if present on the board, based on the coordinates provided.
 
     Searches for char in all the neighbouring cells of the starting point, which is represented by the x- and y-coordinates provided. Takes into account previous searches so a previously-used cell cannot be reused.
 
@@ -117,7 +117,7 @@ def find_word(word, anchors, board, history):
     for (x, y) in anchors:
         print(f'Searching for {word[0]} from around ({x}, {y})')
 
-        possibilities = find_in_coords(word[0], x, y, board, history)
+        possibilities = find_coords(word[0], x, y, board, history)
 
         print(f'{word[0]} is found in {possibilities}\n')
 
