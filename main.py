@@ -50,11 +50,13 @@ def main():
 
         else:
             # Search for all occurrences of the first char
-            anchors = bs.find_first_char(word_to_find, board)
+            anchors = bs.find_first_char(word_to_find[0], board)
 
-            # Try to find the rest of the word
+            # Try to find the rest of the word in the board
             if bs.find_word(word_to_find[1:], anchors, board, []):
                 print('Word is found in board!\n')
+
+                # Search for word in the dictionary
                 print('Checking if word is found in dictionary...')
 
                 word_to_validate = word_to_find.replace('Q', 'QU')

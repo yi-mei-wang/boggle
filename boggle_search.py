@@ -33,14 +33,14 @@ def get_neighbour_coords(x, y, n):
     return [coord for coord in coords if coord[0] >= 0 and coord[0] <= 3 and coord[1] >= 0 and coord[1] <= 3]
 
 
-def find_first_char(word, board):
-    """Searches for the first letter of a given word in a board.
+def find_first_char(char, board):
+    """Searches for the first letter of a given char in a board.
 
-    Iterates through the board to obtain the coordinates of all the occurrences of the first char of word.
+    Iterates through the board to obtain the coordinates of all the occurrences of the first char of a word.
 
     Args: 
     -----
-        word : A string containing the word to search for
+        char : A string respresenting the char to search for
         board : A 2-D list whose each element is a random letter
 
     Returns:
@@ -55,15 +55,15 @@ def find_first_char(word, board):
         # Iterate through the elements of each row
         for x, elem in enumerate(row):
             # Check if the first letter is found
-            if word[0] == elem:
+            if char == elem:
                 anchors.append((x, y))
 
-    print(f'\n{word[0]} is found in {anchors}\n')
+    print(f'\n{char} is found in {anchors}\n')
 
     return anchors
 
 
-def find_coords(char, x, y, board, history):
+def get_possible_coords(char, x, y, board, history):
     """Finds the coordinates of a char, if present on the board, based on the coordinates of the anchor provided.
 
     Searches for char in all the neighbouring cells of the starting point, which is represented by the x- and y-coordinates provided. Takes into account previous searches so a previously-used cell cannot be reused.
@@ -113,11 +113,12 @@ def find_word(word, anchors, board, history):
     if not len(word):
         return True
 
-    # Go through every occurrence of the first char of word and search for the remainder of the word
+    # Go through every occurrence of the first char of word
     for (x, y) in anchors:
         print(f'Searching for {word[0]} from around ({x}, {y})')
 
-        possibilities = find_coords(word[0], x, y, board, history)
+        # Search for the remainder of the word
+        possibilities = get_possible_coords(word[0], x, y, board, history)
 
         print(f'{word[0]} is found in {possibilities}\n')
 
