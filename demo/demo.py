@@ -183,6 +183,10 @@ def find_word(word, first_char_coords, board, history):
     return False
 
 
+########
+# MAIN #
+########
+
 def play():
     board = fill_board()
 
