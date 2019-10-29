@@ -40,15 +40,19 @@ def main():
     while True:
         bh.print_board(board)
 
+        # Get an input from the user
         word_to_find = input(
             'Enter the word to be checked: ').upper().replace('QU', 'Q')
 
+        # Check if word if more 3 chars long
         if len(word_to_find) < 3:
             print('Choose a word that is equal to or longer than 3 characters long.')
 
         else:
-            anchors = bs.check_first_letter(word_to_find, board)
+            # Search for all occurrences of the first char
+            anchors = bs.find_first_char(word_to_find, board)
 
+            # Try to find the rest of the word
             if bs.find_word(word_to_find[1:], anchors, board, []):
                 print('Word is found in board!\n')
                 print('Checking if word is found in dictionary...')

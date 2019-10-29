@@ -33,7 +33,7 @@ def get_neighbour_coords(x, y, n):
     return [coord for coord in coords if coord[0] >= 0 and coord[0] <= 3 and coord[1] >= 0 and coord[1] <= 3]
 
 
-def check_first_letter(word, board):
+def find_first_char(word, board):
     """Searches for the first letter of a given word in a board.
 
     Iterates through the board to obtain the coordinates of all the occurrences of the first char of word.
